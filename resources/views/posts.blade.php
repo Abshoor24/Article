@@ -10,7 +10,7 @@
 
            
             <div class="text-base text-gray-500">
-                <a href="#">{{ $post['author'] }}</a> | 1 Juni 2025
+                <a href="#">{{ $post['author'] }}</a> | {{ $post->created_at->format('d F Y') }} | {{ $post->created_at->diffForHumans() }}
             </div>
             <p class="my-4 font-light">
                 {{ Str::limit($post['body'], 150) }}
