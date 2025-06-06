@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,8 +19,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(8),
-            'author' => fake()->name(),
+            'title' => fake()->sentence(),
+            'author_id' => User::factory(), // otomatis membuat user baru di table users berdasarkan author_id   
             'slug' => Str::slug(fake()->sentence()),
             'body' => fake()->paragraphs(2, true),
         ];
