@@ -12,6 +12,8 @@ class Post extends Model
 
      protected $fillable = ['title', 'author', 'slug', 'body'];// untuk mengatur atribut yang dapat diisi secara massal
 
+     protected $with = ['author', 'category']; // untuk mengaktifkan eager loading pada relasi author dan category, sehingga tidak perlu memanggilnya secara manual
+
      public function author():BelongsTo // relasi antara Post dan User
      {
          return $this->belongsTo(User::class); // menghubungkan Post dengan User berdasarkan author_id agar terlihat nama authornya
