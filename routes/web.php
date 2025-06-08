@@ -42,7 +42,7 @@ Route::get('/authors/{user:username}', function (User $user) { //{user:username}
     ]);
 });
 
-Route::get('/categories/{category:name}', function (Category $category) { //{user:username} cara ke 2 untuk mengubah route binding
+Route::get('/categories/{category:slug}', function (Category $category) { //{user:username} cara ke 2 untuk mengubah route binding
 
     return view('posts', [
         'title' => '  Articles in: ' . $category->name,

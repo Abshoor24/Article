@@ -9,7 +9,7 @@
             <div>
                By <a class="hover:underline text-base text-gray-500" 
                 href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> In 
-                <a class="hover:underline text-base text-gray-500" href="/categories/{{ $post->category->name }}">{{ $post->category->name }}</a> | 
+                <a class="hover:underline text-base text-gray-500" href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a> | 
                 {{ $post->created_at->diffForHumans() }}
             </div>
             <p class="my-4 font-light">
