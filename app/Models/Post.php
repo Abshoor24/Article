@@ -16,4 +16,9 @@ class Post extends Model
      {
          return $this->belongsTo(User::class); // menghubungkan Post dengan User berdasarkan author_id agar terlihat nama authornya
      }
+
+    public function category(): BelongsTo // relasi antara Post dan Category
+        {
+            return $this->belongsTo(Category::class); // menghubungkan Post dengan Category berdasarkan category_id agar terlihat nama kategorinya
+        }
 }

@@ -47,6 +47,12 @@ class User extends Authenticatable
         ];
     }
 
+//     public function getRouteKeyName() // function ini digunakan untuk mengubah route binding, 
+//                                      //karena secara default Laravel akan mencari berdasarkan 'id'
+// {
+//     return 'username'; // Laravel cari berdasarkan 'username' bukan 'id' 
+// }
+
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'author_id');
