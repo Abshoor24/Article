@@ -23,11 +23,9 @@ Route::get('/about', function () {
 // EAGER LOADING 1
 
 Route::get('/posts', function () {
-    // $posts = Post::with(['author', 'category'])->latest()->get(); // tampilkan semua post dengan relasi author, 
+    // $posts = Post::with(['author', 'category'])->latest()->get(); // tampilkan semua post dengan relasi author,
     //                                                 //latest() untuk mengurutkan dari yang terbaru
-
-    $posts = Post::latest()->get();
-    return view('posts', ['title' => 'Blog', 'posts' => $posts]);
+    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
 });
 
 Route::get('/posts/{post:slug}', function (Post $post) {
@@ -56,7 +54,7 @@ Route::get('/authors/{user:username}', function (User $user) { //{user:username}
 
 Route::get('/categories/{category:slug}', function (Category $category) { //{user:username} cara ke 2 untuk mengubah route binding
 
-    // $posts =  $category->posts->load(['category', 'author']); 
+    // $posts =  $category->posts->load(['category', 'author']);
 
     return view('posts', [
         'title' => '  Articles in: ' . $category->name,
