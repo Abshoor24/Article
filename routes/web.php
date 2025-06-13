@@ -25,7 +25,8 @@ Route::get('/about', function () {
 Route::get('/posts', function () {
     // $posts = Post::with(['author', 'category'])->latest()->get(); // tampilkan semua post dengan relasi author,
     //                                                 //latest() untuk mengurutkan dari yang terbaru
-    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
+    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))
+    ->latest()->paginate(9)->withQueryString()]); // QueryString() untuk mempertahankan query string pada pagination dan agart tidak error saat pagination
 });
 
 Route::get('/posts/{post:slug}', function (Post $post) {
